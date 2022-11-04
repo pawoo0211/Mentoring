@@ -3,7 +3,6 @@ package com.example.mentoring.order.service;
 import com.example.mentoring.exception.domain.MenuNotFoundException;
 import com.example.mentoring.menu.domain.Menu;
 import com.example.mentoring.menu.domain.MenuRepository;
-import com.example.mentoring.order.controller.OrderController;
 import com.example.mentoring.order.domain.Order;
 import com.example.mentoring.order.domain.OrderRepository;
 import com.example.mentoring.order.dto.OrderRequestDto;

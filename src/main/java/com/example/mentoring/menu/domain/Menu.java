@@ -24,9 +24,8 @@ public class Menu {
     private int price;
 
     @Builder
-    public Menu(String menu, int price){
+    public Menu(String menu, int price) {
         this.menu = menu;
         this.price = price;
     }
-
 }
