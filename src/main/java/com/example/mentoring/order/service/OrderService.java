@@ -19,13 +19,22 @@ public class OrderService {
     @Transactional
     public OrderResponseDto placeOrder(OrderRequestDto orderRequestDto) {
 
+        // 주문 성공 체크
+
+
+
+
+        // 주문 내역 저장
         Order order = Order.builder()
                 .menu(orderRequestDto.getMenu())
                 .price(orderRequestDto.getPrice())
+                .orderState(true)
                 .build();
 
         orderRepository.save(order);
 
+
+        // 결고 반환
         OrderResponseDto orderResponseDto = OrderResponseDto.builder()
                 .isSuccess(true)
                 .menu(order.getMenu())

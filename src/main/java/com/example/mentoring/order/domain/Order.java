@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @EntityListeners(AuditingEntityListener.class)
+@Table(name = "orders") // 데이터베이스 예약어로 인해 "orders" 이용
 @Entity
 public class Order {
 
