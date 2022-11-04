@@ -1,9 +1,13 @@
 package com.example.mentoring.menu.domain;
 
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Getter
+@NoArgsConstructor
 @Table(name = "menu")
 @Entity
 public class Menu {
