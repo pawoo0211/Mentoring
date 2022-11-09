@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "orders") // 데이터베이스 예약어로 인해 "orders" 이용
 @Entity
-public class Order {
+public class OrderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +33,7 @@ public class Order {
     private boolean orderState;
 
     @Builder
-    public Order(String menu, int price, boolean orderState){
+    public OrderEntity(String menu, int price, boolean orderState){
         this.menu = menu;
         this.price = price;
         this.orderState = orderState;

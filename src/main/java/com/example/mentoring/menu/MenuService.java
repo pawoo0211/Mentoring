@@ -1,7 +1,7 @@
 package com.example.mentoring.menu;
 
-import com.example.mentoring.menu.domain.Menu;
-import com.example.mentoring.menu.domain.MenuRepository;
+import com.example.mentoring.menu.domain.MenuEntity;
+import com.example.mentoring.menu.domain.MenuEntityRepository;
 import com.example.mentoring.menu.in.RegisterMenuIn;
 import com.example.mentoring.menu.out.RegisterMenuOut;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class MenuService {
 
-    private final MenuRepository menuRepository;
+    private final MenuEntityRepository menuEntityRepository;
 
     @Transactional
     public RegisterMenuOut registerMenu(RegisterMenuIn registerMenuIn) {
@@ -26,13 +26,13 @@ public class MenuService {
         }
 
         // 등록된 메뉴가 없을 경우 새로 등록
-        Menu menu = Menu.builder()
+        MenuEntity menuEntity = MenuEntity.builder()
                 .menu(registerMenuIn.getMenu())
                 .price(registerMenuIn.getPrice())
                 .build();
 
         // 메뉴 저장
-        menuRepository.save(menu);
+        menuEntityRepository.save(menuEntity);
 
         return new RegisterMenuOut(true, "등록 성공");
     }
@@ -40,7 +40,7 @@ public class MenuService {
     @Transactional
     private boolean verifyRegisterMenu(RegisterMenuIn registerMenuIn) {
 
-        if (menuRepository.existsByMenu(registerMenuIn.getMenu())) {
+        if (menuEntityRepository.existsByMenu(registerMenuIn.getMenu())) {
             return true;
         }
         return false;

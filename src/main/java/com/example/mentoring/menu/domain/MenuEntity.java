@@ -10,7 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Table(name = "menu")
 @Entity
-public class Menu {
+public class MenuEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class Menu {
     private int price;
 
     @Builder
-    public Menu(String menu, int price) {
+    public MenuEntity(String menu, int price) {
         this.menu = menu;
         this.price = price;
     }
