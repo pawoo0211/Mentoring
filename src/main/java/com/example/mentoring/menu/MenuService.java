@@ -1,4 +1,4 @@
-package com.example.mentoring.menu.service;
+package com.example.mentoring.menu;
 
 import com.example.mentoring.menu.domain.Menu;
 import com.example.mentoring.menu.domain.MenuRepository;

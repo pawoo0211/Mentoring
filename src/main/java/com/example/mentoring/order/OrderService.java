@@ -1,4 +1,4 @@
-package com.example.mentoring.order.service;
+package com.example.mentoring.order;
 
 import com.example.mentoring.exception.domain.MenuNotFoundException;
 import com.example.mentoring.menu.domain.Menu;
