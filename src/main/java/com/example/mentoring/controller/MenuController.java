@@ -1,7 +1,7 @@
 package com.example.mentoring.controller;
 
-import com.example.mentoring.menu.dto.RegisterMenuRequestDto;
-import com.example.mentoring.menu.dto.RegisterMenuResponseDto;
+import com.example.mentoring.menu.in.RegisterMenuIn;
+import com.example.mentoring.menu.out.RegisterMenuOut;
 import com.example.mentoring.menu.service.MenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +17,7 @@ public class MenuController {
     private final MenuService menuService;
 
     @PostMapping("/menu")
-    public RegisterMenuResponseDto registerMenu(@RequestBody @Valid RegisterMenuRequestDto registerMenuRequestDto){
-        return menuService.registerMenu(registerMenuRequestDto);
+    public RegisterMenuOut registerMenu(@RequestBody @Valid RegisterMenuIn registerMenuIn){
+        return menuService.registerMenu(registerMenuIn);
     }
 }
