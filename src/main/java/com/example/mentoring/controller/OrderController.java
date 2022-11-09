@@ -1,4 +1,4 @@
-package com.example.mentoring.order.controller;
+package com.example.mentoring.controller;
 
 import com.example.mentoring.order.dto.OrderRequestDto;
 import com.example.mentoring.order.dto.OrderResponseDto;
@@ -20,5 +20,4 @@ public class OrderController {
     public OrderResponseDto placeOrder(@RequestBody @Valid OrderRequestDto orderRequestDto) {
         return orderService.placeOrder(orderRequestDto);
     }
-
 }

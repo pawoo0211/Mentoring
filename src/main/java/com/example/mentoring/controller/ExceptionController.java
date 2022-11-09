@@ -1,5 +1,6 @@
-package com.example.mentoring.exception;
+package com.example.mentoring.controller;
 
+import com.example.mentoring.exception.ExceptionResponseDto;
 import com.example.mentoring.exception.domain.MenuNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

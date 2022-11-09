@@ -1,4 +1,4 @@
-package com.example.mentoring.menu.controller;
+package com.example.mentoring.controller;
 
 import com.example.mentoring.menu.dto.RegisterMenuRequestDto;
 import com.example.mentoring.menu.dto.RegisterMenuResponseDto;
