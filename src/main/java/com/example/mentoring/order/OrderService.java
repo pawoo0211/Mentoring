@@ -33,7 +33,7 @@ public class OrderService {
         OrderOut orderOut = OrderOut.builder()
                 .isSuccess(orderEntity.isOrderState())
                 .menu(orderEntity.getMenu())
-                .orderTime(orderEntity.getOrderTime())
+                .orderTime(orderEntity.getCreatedDate())
                 .build();
 
         return orderOut;

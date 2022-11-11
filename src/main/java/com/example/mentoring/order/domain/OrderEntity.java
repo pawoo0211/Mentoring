@@ -3,6 +3,7 @@ package com.example.mentoring.order.domain;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -26,8 +27,12 @@ public class OrderEntity {
     private int price;
 
     @CreatedDate
-    @Column(name = "order_time")
-    private LocalDateTime orderTime;
+    @Column(name = "created_date")
+    private LocalDateTime createdDate;
+
+    @LastModifiedDate
+    @Column(name = "modified_date")
+    private LocalDateTime modifiedDate;
 
     @Column(name = "order_state")
     private boolean orderState;
