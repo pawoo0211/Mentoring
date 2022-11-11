@@ -14,7 +14,6 @@ public class MenuService {
 
     private final MenuEntityRepository menuEntityRepository;
 
-    @Transactional
     public RegisterMenuOut registerMenu(RegisterMenuIn registerMenuIn) {
 
         // 이미 등록된 메뉴가 있는지 확인
@@ -37,7 +36,6 @@ public class MenuService {
         return new RegisterMenuOut(true, "등록 성공");
     }
 
-    @Transactional
     private boolean verifyRegisterMenu(RegisterMenuIn registerMenuIn) {
 
         if (menuEntityRepository.existsByMenu(registerMenuIn.getMenu())) {

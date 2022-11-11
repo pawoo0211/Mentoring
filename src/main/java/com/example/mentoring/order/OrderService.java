@@ -20,7 +20,6 @@ public class OrderService {
     private final OrderEntityRepository orderEntityRepository;
     private final MenuEntityRepository menuEntityRepository;
 
-    @Transactional
     public OrderOut placeOrder(OrderIn orderIn) {
 
         // 주문 검증,
@@ -39,7 +38,6 @@ public class OrderService {
         return orderOut;
     }
 
-    @Transactional
     private OrderEntity verifyOrder(OrderIn orderIn) {
 
         // 요청 주문에 따른 메뉴 검증 및 메뉴 생성
