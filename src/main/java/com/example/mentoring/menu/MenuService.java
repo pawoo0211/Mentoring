@@ -1,16 +1,29 @@
 package com.example.mentoring.menu;
+
 import com.example.mentoring.menu.domain.MenuEntity;
 import com.example.mentoring.menu.domain.MenuEntityRepository;
 import com.example.mentoring.menu.in.RegisterMenuIn;
+import com.example.mentoring.menu.model.RegisteredMenus;
 import com.example.mentoring.menu.out.RegisterMenuOut;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
 
 @RequiredArgsConstructor
 @Service
 public class MenuService {
 
     private final MenuEntityRepository menuEntityRepository;
+
+    @PostConstruct
+    public void menuSetting() {
+
+        // 메뉴 등록
+        for (RegisteredMenus menu : RegisteredMenus.values()) {
+            registerMenu(new RegisterMenuIn(menu.getName(), menu.getPrice()));
+        }
+    }
 
     public RegisterMenuOut registerMenu(RegisterMenuIn registerMenuIn) {
 

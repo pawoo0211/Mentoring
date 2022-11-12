@@ -13,4 +13,8 @@ public class RegisterMenuIn {
     @NotNull(message = "가격을 입력해주세요,")
     private int price;
 
+    public RegisterMenuIn(String menu, int price){
+        this.menu = menu;
+        this.price = price;
+    }
 }
