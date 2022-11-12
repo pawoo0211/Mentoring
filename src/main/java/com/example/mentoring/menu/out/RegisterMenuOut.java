@@ -5,11 +5,9 @@ import lombok.Getter;
 @Getter
 public class RegisterMenuOut {
 
-    private boolean isSuccess;
     private String message;
 
-    public RegisterMenuOut(boolean isSuccess, String message){
-        this.isSuccess = isSuccess;
+    public RegisterMenuOut(String message){
         this.message = message;
     }
 }

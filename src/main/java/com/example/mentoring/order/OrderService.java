@@ -1,5 +1,6 @@
 package com.example.mentoring.order;
 
+import com.example.mentoring.ResponseEntity;
 import com.example.mentoring.exception.domain.MenuNotFoundException;
 import com.example.mentoring.menu.domain.MenuEntity;
 import com.example.mentoring.menu.domain.MenuEntityRepository;
@@ -9,8 +10,8 @@ import com.example.mentoring.order.in.OrderIn;
 import com.example.mentoring.order.out.OrderOut;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -20,22 +21,16 @@ public class OrderService {
     private final OrderEntityRepository orderEntityRepository;
     private final MenuEntityRepository menuEntityRepository;
 
-    public OrderOut placeOrder(OrderIn orderIn) {
+    public OrderEntity placeOrder(OrderIn orderIn) {
 
         // 주문 검증,
         OrderEntity orderEntity = verifyOrder(orderIn);
 
-        // 주문 내역 저장, 주문이 정상인 상태
+        // 주문 내역 저장
         orderEntityRepository.save(orderEntity);
 
-        // 결과 반환
-        OrderOut orderOut = OrderOut.builder()
-                .isSuccess(orderEntity.isOrderState())
-                .menu(orderEntity.getMenu())
-                .orderTime(orderEntity.getCreatedDate())
-                .build();
-
-        return orderOut;
+        // 주문 검증으로 생성된 주문 객체 반환
+        return orderEntity;
     }
 
     private OrderEntity verifyOrder(OrderIn orderIn) {
@@ -45,28 +40,29 @@ public class OrderService {
                 .orElseThrow(() -> new MenuNotFoundException());
 
         // 메뉴 검증 - 결제 금액이 비정상일 경우
-        if(menuEntity.getPrice() != orderIn.getPrice()){
-            log.info("Menu`s Price: "+ menuEntity.getPrice());
-            log.info("Order`s Price: "+ orderIn.getPrice());
+        if (menuEntity.getPrice() != orderIn.getPrice()) {
+            log.info("Menu`s Price: " + menuEntity.getPrice());
+            log.info("Order`s Price: " + orderIn.getPrice());
 
             // 비정상 주문 객체 생성
             OrderEntity orderEntity = OrderEntity.builder()
                     .menu(orderIn.getMenu())
                     .price(orderIn.getPrice())
-                    .orderState(false)
+                    .orderState(false) // 재수정
                     .build();
 
             // 비정상 주문 객체 반환
             return orderEntity;
         }
 
-        // 메뉴 검증 - 결제 금액이 정상일 경우 주문 객체를 반환
+        // 메뉴 검증 - 결제 금액이 정상인 경우
         OrderEntity orderEntity = OrderEntity.builder()
                 .menu(orderIn.getMenu())
                 .price(orderIn.getPrice())
                 .orderState(true)
                 .build();
 
+        // 정상 주문 객체 반환
         return orderEntity;
     }
 }

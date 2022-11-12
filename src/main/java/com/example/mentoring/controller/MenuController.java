@@ -1,5 +1,6 @@
 package com.example.mentoring.controller;
 
+import com.example.mentoring.ResponseEntity;
 import com.example.mentoring.menu.in.RegisterMenuIn;
 import com.example.mentoring.menu.out.RegisterMenuOut;
 import com.example.mentoring.menu.MenuService;
@@ -17,7 +18,14 @@ public class MenuController {
     private final MenuService menuService;
 
     @PostMapping("/menu")
-    public RegisterMenuOut registerMenu(@RequestBody @Valid RegisterMenuIn registerMenuIn){
-        return menuService.registerMenu(registerMenuIn);
+    public ResponseEntity registerMenu(@RequestBody @Valid RegisterMenuIn registerMenuIn) {
+        RegisterMenuOut registerMenuOut = menuService.registerMenu(registerMenuIn);
+
+        // 메뉴 등록 실패에 따른 비정상 응답 반환
+        if (registerMenuOut.getMessage().equals("등록 실패")) {
+            return new ResponseEntity(false, registerMenuOut);
+        }
+        // 메뉴 등록에 따른 정상 응답 반환
+        return new ResponseEntity(true, registerMenuOut);
     }
 }
