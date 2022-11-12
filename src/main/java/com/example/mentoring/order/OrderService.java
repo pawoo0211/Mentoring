@@ -7,6 +7,8 @@ import com.example.mentoring.menu.domain.MenuEntityRepository;
 import com.example.mentoring.order.domain.OrderEntity;
 import com.example.mentoring.order.domain.OrderEntityRepository;
 import com.example.mentoring.order.in.OrderIn;
+import com.example.mentoring.order.model.Food;
+import com.example.mentoring.order.model.FoodMaker;
 import com.example.mentoring.order.out.OrderOut;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -61,6 +63,11 @@ public class OrderService {
                 .price(orderIn.getPrice())
                 .orderState(true)
                 .build();
+
+        // 주문이 정상일 경우 음식 만들기
+        FoodMaker foodMaker = new FoodMaker();
+        Food food = foodMaker.makeFood(orderEntity.getMenu());
+        log.info("Requested Menu is "+food.getName());
 
         // 정상 주문 객체 반환
         return orderEntity;
