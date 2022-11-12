@@ -2,9 +2,9 @@ package com.example.mentoring.order;
 
 import com.example.mentoring.exception.domain.MenuNotFoundException;
 import com.example.mentoring.menu.domain.MenuEntity;
-import com.example.mentoring.menu.domain.MenuEntityRepository;
+import com.example.mentoring.menu.domain.MenuRepository;
 import com.example.mentoring.order.domain.OrderEntity;
-import com.example.mentoring.order.domain.OrderEntityRepository;
+import com.example.mentoring.order.domain.OrderRepository;
 import com.example.mentoring.order.in.OrderIn;
 import com.example.mentoring.food.domain.Food;
 import com.example.mentoring.food.domain.FoodMaker;
@@ -17,8 +17,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderService {
 
-    private final OrderEntityRepository orderEntityRepository;
-    private final MenuEntityRepository menuEntityRepository;
+    private final OrderRepository orderRepository;
+    private final MenuRepository menuRepository;
 
     public OrderEntity placeOrder(OrderIn orderIn) {
 
@@ -26,7 +26,7 @@ public class OrderService {
         OrderEntity orderEntity = verifyOrder(orderIn);
 
         // 주문 내역 저장
-        orderEntityRepository.save(orderEntity);
+        orderRepository.save(orderEntity);
 
         // 주문 검증으로 생성된 주문 객체 반환
         return orderEntity;
@@ -35,7 +35,7 @@ public class OrderService {
     private OrderEntity verifyOrder(OrderIn orderIn) {
 
         // 요청 주문에 따른 메뉴 검증 및 메뉴 생성
-        MenuEntity menuEntity = menuEntityRepository.findByMenu(orderIn.getMenu())
+        MenuEntity menuEntity = menuRepository.findByMenu(orderIn.getMenu())
                 .orElseThrow(() -> new MenuNotFoundException());
 
         // 메뉴 검증 - 결제 금액이 비정상일 경우

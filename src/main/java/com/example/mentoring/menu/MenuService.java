@@ -1,7 +1,7 @@
 package com.example.mentoring.menu;
 
 import com.example.mentoring.menu.domain.MenuEntity;
-import com.example.mentoring.menu.domain.MenuEntityRepository;
+import com.example.mentoring.menu.domain.MenuRepository;
 import com.example.mentoring.menu.in.RegisterMenuIn;
 import com.example.mentoring.menu.model.RegisteredMenus;
 import com.example.mentoring.menu.out.RegisterMenuOut;
@@ -14,7 +14,7 @@ import javax.annotation.PostConstruct;
 @Service
 public class MenuService {
 
-    private final MenuEntityRepository menuEntityRepository;
+    private final MenuRepository menuRepository;
 
     @PostConstruct
     public void menuSetting() {
@@ -42,7 +42,7 @@ public class MenuService {
                 .build();
 
         // 메뉴 저장
-        menuEntityRepository.save(menuEntity);
+        menuRepository.save(menuEntity);
 
         // 메뉴 등록 성공 반환
         return new RegisterMenuOut("등록 성공");
@@ -51,7 +51,7 @@ public class MenuService {
 
     private boolean verifyRegisterMenu(RegisterMenuIn registerMenuIn) {
 
-        if (menuEntityRepository.existsByMenu(registerMenuIn.getMenu())) {
+        if (menuRepository.existsByMenu(registerMenuIn.getMenu())) {
             return true;
         }
         return false;
