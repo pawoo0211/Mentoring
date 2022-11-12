@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "menu")
+@Table(name = "menus")
 @Entity
 public class MenuEntity {
 
