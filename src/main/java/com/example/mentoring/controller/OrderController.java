@@ -36,6 +36,6 @@ public class OrderController {
         }
 
         // 정상 응답 반환
-        return new ResponseEntity(true, orderOut);
+        return new ResponseEntity(orderOut);
     }
 }

@@ -26,6 +26,6 @@ public class MenuController {
             return new ResponseEntity(false, registerMenuOut);
         }
         // 메뉴 등록에 따른 정상 응답 반환
-        return new ResponseEntity(true, registerMenuOut);
+        return new ResponseEntity(registerMenuOut);
     }
 }
