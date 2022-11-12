@@ -18,7 +18,6 @@ public class OrderController {
 
     private final OrderService orderService;
 
-
     @PostMapping("/order")
     public ResponseEntity placeOrder(@RequestBody @Valid OrderIn orderIn) {
         OrderEntity orderEntity = orderService.placeOrder(orderIn);

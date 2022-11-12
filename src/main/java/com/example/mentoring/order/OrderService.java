@@ -1,6 +1,7 @@
 package com.example.mentoring.order;
 
 import com.example.mentoring.exception.domain.MenuNotFoundException;
+import com.example.mentoring.food.domain.FoodManager;
 import com.example.mentoring.menu.domain.MenuEntity;
 import com.example.mentoring.menu.domain.MenuRepository;
 import com.example.mentoring.order.domain.OrderEntity;
@@ -19,6 +20,7 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
     private final MenuRepository menuRepository;
+    private final FoodManager foodManager;
 
     public OrderEntity placeOrder(OrderIn orderIn) {
 
@@ -62,12 +64,11 @@ public class OrderService {
                 .build();
 
         // 주문이 정상일 경우 음식 만들기
-        FoodMaker foodMaker = new FoodMaker();
-        Food food = foodMaker.makeFood(orderEntity.getMenu());
+        FoodMaker foodMaker = foodManager.choiceFoodMaker(orderEntity.getMenu());
+        Food food = foodMaker.make();
         log.info("Requested Menu is " + food.getName());
 
         // 정상 주문 객체 반환
         return orderEntity;
     }
 }
-
