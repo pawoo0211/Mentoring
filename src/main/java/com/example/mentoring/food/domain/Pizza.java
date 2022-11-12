@@ -1,4 +1,4 @@
-package com.example.mentoring.order.model;
+package com.example.mentoring.food.domain;
 
 public class Pizza extends Food {
 

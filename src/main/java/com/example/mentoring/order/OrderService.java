@@ -1,18 +1,15 @@
 package com.example.mentoring.order;
 
-import com.example.mentoring.ResponseEntity;
 import com.example.mentoring.exception.domain.MenuNotFoundException;
 import com.example.mentoring.menu.domain.MenuEntity;
 import com.example.mentoring.menu.domain.MenuEntityRepository;
 import com.example.mentoring.order.domain.OrderEntity;
 import com.example.mentoring.order.domain.OrderEntityRepository;
 import com.example.mentoring.order.in.OrderIn;
-import com.example.mentoring.order.model.Food;
-import com.example.mentoring.order.model.FoodMaker;
-import com.example.mentoring.order.out.OrderOut;
+import com.example.mentoring.food.domain.Food;
+import com.example.mentoring.food.domain.FoodMaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -67,7 +64,7 @@ public class OrderService {
         // 주문이 정상일 경우 음식 만들기
         FoodMaker foodMaker = new FoodMaker();
         Food food = foodMaker.makeFood(orderEntity.getMenu());
-        log.info("Requested Menu is "+food.getName());
+        log.info("Requested Menu is " + food.getName());
 
         // 정상 주문 객체 반환
         return orderEntity;

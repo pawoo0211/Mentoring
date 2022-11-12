@@ -3,8 +3,6 @@ package com.example.mentoring.controller;
 import com.example.mentoring.ResponseEntity;
 import com.example.mentoring.order.domain.OrderEntity;
 import com.example.mentoring.order.in.OrderIn;
-import com.example.mentoring.order.model.Food;
-import com.example.mentoring.order.model.FoodMaker;
 import com.example.mentoring.order.out.OrderOut;
 import com.example.mentoring.order.OrderService;
 import lombok.RequiredArgsConstructor;

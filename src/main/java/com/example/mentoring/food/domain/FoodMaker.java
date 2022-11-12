@@ -1,12 +1,11 @@
-package com.example.mentoring.order.model;
+package com.example.mentoring.food.domain;
 
 public class FoodMaker {
 
     public Food makeFood(String menu) {
         if (menu.equals("CHICKEN")) {
             return new Chicken();
-        }
-        else if (menu.equals("PIZZA")) {
+        } else if (menu.equals("PIZZA")) {
             return new Pizza();
         }
         return null;
