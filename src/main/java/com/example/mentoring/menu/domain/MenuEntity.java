@@ -1,23 +1,26 @@
-package com.example.mentoring.order.domain;
+package com.example.mentoring.menu.domain;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
+@NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "orders") // 데이터베이스 예약어로 인해 "orders" 이용
+@Table(name = "menus")
 @Entity
-public class Order {
+public class MenuEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
-    private Long orderId;
+    private Long menuId;
 
     @Column(name = "menu")
     private String menu;
@@ -26,16 +29,16 @@ public class Order {
     private int price;
 
     @CreatedDate
-    @Column(name = "order_time")
-    private LocalDateTime orderTime;
+    @Column(name = "created_date")
+    private LocalDateTime createdDate;
 
-    @Column(name = "order_state")
-    private boolean orderState;
+    @LastModifiedDate
+    @Column(name = "modified_date")
+    private LocalDateTime modifiedDate;
 
     @Builder
-    public Order(String menu, int price, boolean orderState){
+    public MenuEntity(String menu, int price) {
         this.menu = menu;
         this.price = price;
-        this.orderState = orderState;
     }
 }

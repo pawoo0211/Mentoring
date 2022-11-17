@@ -1,4 +1,4 @@
-package com.example.mentoring.menu.dto;
+package com.example.mentoring.order.in;
 
 import lombok.Getter;
 
@@ -6,7 +6,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Getter
-public class RegisterMenuRequestDto {
+public class OrderIn {
 
     @NotEmpty(message = "메뉴를 입력해주세요.")
     private String menu;
