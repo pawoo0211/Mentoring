@@ -1,4 +1,4 @@
-package com.example.mentoring.controller;
+package com.example.mentoring.exception;
 
 import com.example.mentoring.exception.ExceptionResponseDto;
 import com.example.mentoring.exception.domain.MenuNotFoundException;
