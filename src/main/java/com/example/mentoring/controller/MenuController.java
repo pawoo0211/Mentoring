@@ -1,6 +1,6 @@
 package com.example.mentoring.controller;
 
-import com.example.mentoring.ResponseEntity;
+import com.example.mentoring.common.ResponseEntity;
 import com.example.mentoring.menu.in.RegisterMenuIn;
 import com.example.mentoring.menu.out.RegisterMenuOut;
 import com.example.mentoring.menu.MenuService;

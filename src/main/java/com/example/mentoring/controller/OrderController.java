@@ -1,6 +1,6 @@
 package com.example.mentoring.controller;
 
-import com.example.mentoring.ResponseEntity;
+import com.example.mentoring.common.ResponseEntity;
 import com.example.mentoring.order.domain.OrderEntity;
 import com.example.mentoring.order.in.OrderIn;
 import com.example.mentoring.order.out.OrderOut;

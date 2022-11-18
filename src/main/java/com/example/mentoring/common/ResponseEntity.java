@@ -1,4 +1,4 @@
-package com.example.mentoring;
+package com.example.mentoring.common;
 
 import lombok.Getter;
 
