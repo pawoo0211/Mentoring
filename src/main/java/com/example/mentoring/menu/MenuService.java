@@ -3,7 +3,7 @@ package com.example.mentoring.menu;
 import com.example.mentoring.menu.domain.MenuEntity;
 import com.example.mentoring.menu.domain.MenuRepository;
 import com.example.mentoring.menu.in.RegisterMenuIn;
-import com.example.mentoring.menu.model.RegisteredMenus;
+import com.example.mentoring.constant.RegisteredMenus;
 import com.example.mentoring.menu.out.RegisterMenuOut;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

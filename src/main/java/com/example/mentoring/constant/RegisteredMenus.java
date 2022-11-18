@@ -1,4 +1,4 @@
-package com.example.mentoring.menu.model;
+package com.example.mentoring.constant;
 
 public enum RegisteredMenus {
 
