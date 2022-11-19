@@ -28,11 +28,11 @@ public class CommonResponse<T> {
 
     // 생성자 방법에서 "Static method"를 이용한 방법으로 리팩터링
     // "static"의 특성으로 인해 인자 값에 "Generic"을 사용할 수 없음 -> "Generic" 메서드로 변환
-    private static <T> CommonResponse ok(T out){
+    public static <T> CommonResponse ok(T out){
         return new CommonResponse(true, out);
     }
 
-    private static <T> CommonResponse fail(T out){
+    public static <T> CommonResponse fail(T out){
         return new CommonResponse(false, out);
     }
 }
