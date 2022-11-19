@@ -1,11 +1,10 @@
 package com.example.mentoring.food.domain;
 
+import com.example.mentoring.constant.RegisteredMenus;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PizzaMaker implements FoodMaker {
-
-    private String menu = "PIZZA";
 
     @Override
     public Food make() {
@@ -13,7 +12,7 @@ public class PizzaMaker implements FoodMaker {
     }
 
     @Override
-    public String getMenu() {
-        return menu;
+    public RegisteredMenus getMenu() {
+        return RegisteredMenus.PIZZA;
     }
 }
