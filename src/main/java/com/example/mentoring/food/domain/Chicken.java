@@ -1,13 +1,11 @@
 package com.example.mentoring.food.domain;
 
+import com.example.mentoring.constant.RegisteredMenus;
+
 public class Chicken extends Food {
 
-    private String name = "CHICKEN";
-
-    /* 불필요한 "Override" 제거
     @Override
     public String getName() {
-        return name;
+        return RegisteredMenus.CHICKEN.getName();
     }
-    */
 }
