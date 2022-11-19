@@ -1,5 +1,6 @@
 package com.example.mentoring.food.domain;
 
+import com.example.mentoring.constant.RegisteredMenus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
@@ -15,7 +16,8 @@ import java.util.Map;
 public class FoodManager implements InitializingBean {
 
     private final ApplicationContext applicationContext;
-    private Map<String, FoodMaker> foodMakerMap = new HashMap<>();
+    // "key" 값 String -> "RegisteredMenus" 변경, 대체할 "enum"이 있다면 최대한 enum 활용 하기!
+    private Map<RegisteredMenus, FoodMaker> foodMakerMap = new HashMap<>();
 
     /* 기존의 소스코드는 "API"가 호출 될 때마다 계속해서 반복문을 돌아야하는 구조
      * 하지만 현재 로직은 스프링 컨테이너가 생성(1번 호출)되고 "foodMakerMap"에  "FoodMaker"들이 전부 들어있는 구조
@@ -27,7 +29,7 @@ public class FoodManager implements InitializingBean {
 
         for (FoodMaker foodMaker : foodMakers) {
             // if("~" != null)인 이유는 에러 객체가 생성되면 그 때 에러 발생 여부를 알 수 있기 때문
-            if (foodMakerMap.put(foodMaker.getMenu().getName(), foodMaker) != null) {
+            if (foodMakerMap.put(foodMaker.getMenu(), foodMaker) != null) {
                 throw new IllegalAccessException("Put Process Exception in foodMaker");
             }
         }
