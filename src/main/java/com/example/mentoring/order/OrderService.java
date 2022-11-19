@@ -63,10 +63,13 @@ public class OrderService {
                 .orderState(true)
                 .build();
 
-        // 주문이 정상일 경우 요리에 맞는 요리사 선택
+        /* 기존 소스코드
         FoodMaker foodMaker = foodManager.choiceFoodMaker(orderEntity.getMenu());
-        // 조리 시작
         Food food = foodMaker.make();
+        */
+
+        // "FoodManager"의 하위 객체들은 전부 정보은닉 상태 되어야 함
+        Food food = foodManager.make(orderEntity.getMenu());
         log.info("Requested Menu is " + food.getName());
 
         // 정상 주문 객체 반환
