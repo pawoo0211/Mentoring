@@ -21,7 +21,8 @@ public class CommonResponse<T> {
     }
      */
 
-    public CommonResponse(Boolean isSuccess, T out){
+    // 외부에서 생성자를 사용하지 못하도록 접근지정자 변경
+    private CommonResponse(Boolean isSuccess, T out){
         this.isSuccess = isSuccess;
         this.out = out;
     }
