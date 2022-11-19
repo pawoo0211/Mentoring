@@ -63,8 +63,9 @@ public class OrderService {
                 .orderState(true)
                 .build();
 
-        // 주문이 정상일 경우 음식 만들기
+        // 주문이 정상일 경우 요리에 맞는 요리사 선택
         FoodMaker foodMaker = foodManager.choiceFoodMaker(orderEntity.getMenu());
+        // 조리 시작
         Food food = foodMaker.make();
         log.info("Requested Menu is " + food.getName());
 
