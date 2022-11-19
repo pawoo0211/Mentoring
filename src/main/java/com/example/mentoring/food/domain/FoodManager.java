@@ -14,7 +14,7 @@ public class FoodManager {
 
     public FoodMaker choiceFoodMaker(String menu) {
         return foodMakerList.stream()
-                .filter(foodMaker -> foodMaker.getMenu().equals(menu))
+                .filter(foodMaker -> foodMaker.getMenu().getName().equals(menu))
                 .findFirst()
                 .orElseThrow(() -> new MenuNotFoundException());
     }
