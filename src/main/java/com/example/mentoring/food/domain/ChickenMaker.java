@@ -4,7 +4,7 @@ import com.example.mentoring.constant.RegisteredMenus;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ChickenMaker implements FoodMaker {
+class ChickenMaker implements FoodMaker {
 
     @Override
     public Food make() {

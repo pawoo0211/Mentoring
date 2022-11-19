@@ -1,14 +1,13 @@
 package com.example.mentoring.order;
 
 import com.example.mentoring.exception.domain.MenuNotFoundException;
+import com.example.mentoring.food.domain.Food;
 import com.example.mentoring.food.domain.FoodManager;
 import com.example.mentoring.menu.domain.MenuEntity;
 import com.example.mentoring.menu.domain.MenuRepository;
 import com.example.mentoring.order.domain.OrderEntity;
 import com.example.mentoring.order.domain.OrderRepository;
 import com.example.mentoring.order.in.OrderIn;
-import com.example.mentoring.food.domain.Food;
-import com.example.mentoring.food.domain.FoodMaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

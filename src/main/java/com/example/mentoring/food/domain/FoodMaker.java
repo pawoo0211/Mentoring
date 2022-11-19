@@ -2,7 +2,7 @@ package com.example.mentoring.food.domain;
 
 import com.example.mentoring.constant.RegisteredMenus;
 
-public interface FoodMaker {
+interface FoodMaker {
 
     public Food make();
     public RegisteredMenus getMenu();
