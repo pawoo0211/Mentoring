@@ -32,10 +32,10 @@ public class OrderController {
         // 비정상 응답 반환
         if (!orderEntity.isOrderState()) {
             orderOut.setOrderState(false);
-            return new CommonResponse(false, orderOut);
+            return CommonResponse.fail(orderOut);
         }
 
         // 정상 응답 반환
-        return new CommonResponse(orderOut);
+        return CommonResponse.ok(orderOut);
     }
 }

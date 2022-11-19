@@ -23,9 +23,9 @@ public class MenuController {
 
         // 메뉴 등록 실패에 따른 비정상 응답 반환
         if (registerMenuOut.getMessage().equals("등록 실패")) {
-            return new CommonResponse(false, registerMenuOut);
+            return CommonResponse.fail(registerMenuOut);
         }
         // 메뉴 등록에 따른 정상 응답 반환
-        return new CommonResponse(registerMenuOut);
+        return CommonResponse.ok(registerMenuOut);
     }
 }
