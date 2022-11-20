@@ -36,7 +36,7 @@ public class OrderService {
     private OrderEntity verifyOrder(OrderIn orderIn) {
 
         // 요청 주문에 따른 메뉴 검증 및 메뉴 생성
-        MenuEntity menuEntity = menuRepository.findByMenu(orderIn.getMenu())
+        MenuEntity menuEntity = menuRepository.findByMenu(orderIn.getMenu().getName())
                 .orElseThrow(() -> new MenuNotFoundException());
 
         // 메뉴 검증 - 결제 금액이 비정상일 경우
@@ -46,7 +46,7 @@ public class OrderService {
 
             // 비정상 주문 객체 생성
             OrderEntity orderEntity = OrderEntity.builder()
-                    .menu(orderIn.getMenu())
+                    .menu(orderIn.getMenu().getName())
                     .price(orderIn.getPrice())
                     .orderState(false) // 재수정
                     .build();
@@ -57,7 +57,7 @@ public class OrderService {
 
         // 메뉴 검증 - 결제 금액이 정상인 경우
         OrderEntity orderEntity = OrderEntity.builder()
-                .menu(orderIn.getMenu())
+                .menu(orderIn.getMenu().getName())
                 .price(orderIn.getPrice())
                 .orderState(true)
                 .build();
@@ -68,7 +68,7 @@ public class OrderService {
         */
 
         // "FoodManager"의 하위 객체들은 전부 정보은닉 상태 되어야 함
-        Food food = foodManager.make(orderEntity.getMenu());
+        Food food = foodManager.make(orderIn.getMenu());
         log.info("Requested Menu is " + food.getName());
 
         // 정상 주문 객체 반환
