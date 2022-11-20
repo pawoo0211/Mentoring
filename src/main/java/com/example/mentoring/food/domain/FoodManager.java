@@ -35,7 +35,7 @@ public class FoodManager implements InitializingBean {
         }
     }
 
-    public Food make(String menu) {
+    public Food make(RegisteredMenus menu) {
         FoodMaker foodMaker = foodMakerMap.get(menu);
         return foodMaker.make();
     }
