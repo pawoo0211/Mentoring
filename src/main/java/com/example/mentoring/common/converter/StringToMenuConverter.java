@@ -1,6 +1,6 @@
 package com.example.mentoring.common.converter;
 
-import com.example.mentoring.constant.RegisteredMenus;
+import com.example.mentoring.constant.Menu;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
  * 만약 "menu" 패키지에 있을 경우 "StringToMenuConverter"는 "menu" 패키지의 안에서만 주로 사용 되게끔 제한되어야 함
  */
 @Component
-public class StringToMenuConverter implements Converter<String, RegisteredMenus> {
+public class StringToMenuConverter implements Converter<String, Menu> {
 
     @Override
-    public RegisteredMenus convert(String menu){
-        return RegisteredMenus.valueOf(menu);
+    public Menu convert(String menu){
+        return Menu.valueOf(menu);
     }
 }

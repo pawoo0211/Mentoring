@@ -3,7 +3,6 @@ package com.example.mentoring.menu;
 import com.example.mentoring.menu.domain.MenuEntity;
 import com.example.mentoring.menu.domain.MenuRepository;
 import com.example.mentoring.menu.in.RegisterMenuIn;
-import com.example.mentoring.constant.RegisteredMenus;
 import com.example.mentoring.menu.out.RegisterMenuOut;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,9 +22,10 @@ public class MenuService {
          * 메뉴 등록 로직
          * 아래 방법 말고 "*.sql" 파일을 이용하여 쿼리로 자동 "insert" 가능
          */
-        for (RegisteredMenus menu : RegisteredMenus.values()) {
-            registerMenu(new RegisterMenuIn(menu.getName(), menu.getPrice()));
-        }
+//        for (RegisteredMenus menu : RegisteredMenus.values()) {
+//            registerMenu(new RegisterMenuIn(menu.getName(), menu.getPrice()));
+//        }
+
     }
 
     public RegisterMenuOut registerMenu(RegisterMenuIn registerMenuIn) {

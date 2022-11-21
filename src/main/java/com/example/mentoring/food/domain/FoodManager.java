@@ -1,6 +1,6 @@
 package com.example.mentoring.food.domain;
 
-import com.example.mentoring.constant.RegisteredMenus;
+import com.example.mentoring.constant.Menu;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Component
@@ -17,7 +16,7 @@ public class FoodManager implements InitializingBean {
 
     private final ApplicationContext applicationContext;
     // "key" 값 String -> "RegisteredMenus" 변경, 대체할 "enum"이 있다면 최대한 enum 활용 하기!
-    private Map<RegisteredMenus, FoodMaker> foodMakerMap = new HashMap<>();
+    private Map<Menu, FoodMaker> foodMakerMap = new HashMap<>();
 
     /* 기존의 소스코드는 "API"가 호출 될 때마다 계속해서 반복문을 돌아야하는 구조
      * 하지만 현재 로직은 스프링 컨테이너가 생성(1번 호출)되고 "foodMakerMap"에  "FoodMaker"들이 전부 들어있는 구조
@@ -35,7 +34,7 @@ public class FoodManager implements InitializingBean {
         }
     }
 
-    public Food make(RegisteredMenus menu) {
+    public Food make(Menu menu) {
         FoodMaker foodMaker = foodMakerMap.get(menu);
         return foodMaker.make();
     }
