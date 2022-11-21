@@ -1,5 +1,6 @@
 package com.example.mentoring.menu;
 
+import com.example.mentoring.constant.Menu;
 import com.example.mentoring.menu.domain.MenuEntity;
 import com.example.mentoring.menu.domain.MenuRepository;
 import com.example.mentoring.menu.in.RegisterMenuIn;
@@ -26,6 +27,12 @@ public class MenuService {
 //            registerMenu(new RegisterMenuIn(menu.getName(), menu.getPrice()));
 //        }
 
+        /**
+         * 단순 테스트를 위한 코드로는 하드코딩이 더 심플하고 가독성이 좋을 수 있습니다.
+         * 하드코딩이 항상 나쁜건 아니랍니다.
+         */
+        registerMenu(new RegisterMenuIn(Menu.CHICKEN.getName(), 20000));
+        registerMenu(new RegisterMenuIn(Menu.PIZZA.getName(), 25000));
     }
 
     public RegisterMenuOut registerMenu(RegisterMenuIn registerMenuIn) {
