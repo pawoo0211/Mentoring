@@ -24,7 +24,7 @@ public class OrderController {
 
         // 주문 DTO 생성, 주문 상태가 정상일 경우로 가정(중복코드 제거를 위해)
         OrderOut orderOut = OrderOut.builder()
-                .menu(orderEntity.getMenu())
+                .menu(orderIn.getMenu())
                 .orderTime(orderEntity.getCreatedDate())
                 .orderState(true)
                 .build();
