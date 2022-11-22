@@ -1,14 +1,13 @@
 package com.example.mentoring.order;
 
 import com.example.mentoring.exception.domain.MenuNotFoundException;
+import com.example.mentoring.food.domain.Food;
 import com.example.mentoring.food.domain.FoodManager;
 import com.example.mentoring.menu.domain.MenuEntity;
 import com.example.mentoring.menu.domain.MenuRepository;
 import com.example.mentoring.order.domain.OrderEntity;
 import com.example.mentoring.order.domain.OrderRepository;
 import com.example.mentoring.order.in.OrderIn;
-import com.example.mentoring.food.domain.Food;
-import com.example.mentoring.food.domain.FoodMaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -37,7 +36,7 @@ public class OrderService {
     private OrderEntity verifyOrder(OrderIn orderIn) {
 
         // 요청 주문에 따른 메뉴 검증 및 메뉴 생성
-        MenuEntity menuEntity = menuRepository.findByMenu(orderIn.getMenu())
+        MenuEntity menuEntity = menuRepository.findByMenu(orderIn.getMenu().getName())
                 .orElseThrow(() -> new MenuNotFoundException());
 
         // 메뉴 검증 - 결제 금액이 비정상일 경우
@@ -47,7 +46,7 @@ public class OrderService {
 
             // 비정상 주문 객체 생성
             OrderEntity orderEntity = OrderEntity.builder()
-                    .menu(orderIn.getMenu())
+                    .menu(orderIn.getMenu().getName())
                     .price(orderIn.getPrice())
                     .orderState(false) // 재수정
                     .build();
@@ -58,15 +57,18 @@ public class OrderService {
 
         // 메뉴 검증 - 결제 금액이 정상인 경우
         OrderEntity orderEntity = OrderEntity.builder()
-                .menu(orderIn.getMenu())
+                .menu(orderIn.getMenu().getName())
                 .price(orderIn.getPrice())
                 .orderState(true)
                 .build();
 
-        // 주문이 정상일 경우 요리에 맞는 요리사 선택
+        /* 기존 소스코드
         FoodMaker foodMaker = foodManager.choiceFoodMaker(orderEntity.getMenu());
-        // 조리 시작
         Food food = foodMaker.make();
+        */
+
+        // "FoodManager"의 하위 객체들은 전부 정보은닉 상태 되어야 함
+        Food food = foodManager.make(orderIn.getMenu());
         log.info("Requested Menu is " + food.getName());
 
         // 정상 주문 객체 반환

@@ -1,11 +1,11 @@
 package com.example.mentoring.food.domain;
 
-public class Pizza extends Food {
+import com.example.mentoring.constant.Menu;
 
-    private String name = "PIZZA";
+class Pizza extends Food {
 
     @Override
     public String getName() {
-        return name;
+        return Menu.PIZZA.getName();
     }
 }

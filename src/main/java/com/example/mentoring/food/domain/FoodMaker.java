@@ -1,9 +1,11 @@
 package com.example.mentoring.food.domain;
 
-public interface FoodMaker {
+import com.example.mentoring.constant.Menu;
+
+interface FoodMaker {
 
     public Food make();
-    public String getMenu();
+    public Menu getMenu();
 
     /* 멘토님께 피드백 받기 전 코드, 새로운 메뉴가 추가되면 로직(소스코드)가 추가 됨
        추상화가 잘 되면 코드 수정 없이 메뉴추가가 가능하다!!
