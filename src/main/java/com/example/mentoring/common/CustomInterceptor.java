@@ -19,8 +19,7 @@ public class CustomInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse Response, Object handler)
             throws Exception {
 
-        log.info("CustomInterceptor - preHandle");
-        log.info("Before calling the controller function");
+        log.info("preHandle: Before calling the controller function");
         return true;
     }
 
@@ -28,15 +27,13 @@ public class CustomInterceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
                            @Nullable ModelAndView modelAndView) throws Exception {
 
-        log.info("CustomInterceptor - postHandle");
-        log.info("After calling the controller function");
+        log.info("postHandle: After calling the controller function");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
                                 @Nullable Exception ex) throws Exception {
 
-        log.info("CustomInterceptor - afterCompletion");
-        log.info("Method process completion");
+        log.info("afterCompletion: Method process completion");
     }
 }
