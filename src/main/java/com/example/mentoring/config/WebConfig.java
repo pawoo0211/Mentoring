@@ -1,6 +1,7 @@
 package com.example.mentoring.config;
 
 import com.example.mentoring.common.CustomInterceptor;
+import com.example.mentoring.common.ThreadLocalInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -17,5 +18,6 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry interceptorRegistry){
         interceptorRegistry.addInterceptor(new CustomInterceptor());
+        interceptorRegistry.addInterceptor(new ThreadLocalInterceptor());
     }
 }
