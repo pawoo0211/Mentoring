@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CustomInterceptor implements HandlerInterceptor {
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse Response, Object handler)
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
 
         log.info("Interceptor: Interceptor`s preHandle method is called");
@@ -34,6 +34,6 @@ public class CustomInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
                                 @Nullable Exception ex) throws Exception {
 
-        log.info("Interceptor : Interceptor`s afterCompletion method is called");
+        log.info("Interceptor: Interceptor`s afterCompletion method is called");
     }
 }
