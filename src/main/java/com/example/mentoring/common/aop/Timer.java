@@ -1,4 +1,4 @@
-package com.example.mentoring.common;
+package com.example.mentoring.common.aop;
 
 import java.lang.annotation.*;
 
