@@ -1,5 +1,6 @@
 package com.example.mentoring.order;
 
+import com.example.mentoring.common.aop.CheckOpeningHours;
 import com.example.mentoring.common.aop.Timer;
 import com.example.mentoring.exception.domain.MenuNotFoundException;
 import com.example.mentoring.food.domain.Food;
@@ -23,6 +24,7 @@ public class OrderService {
     private final FoodManager foodManager;
 
     @Timer
+    @CheckOpeningHours
     public OrderEntity placeOrder(OrderIn orderIn) {
 
         // 주문 검증,

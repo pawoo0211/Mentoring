@@ -19,17 +19,10 @@ public class MenuService {
     @PostConstruct
     public void menuSetting() {
 
-        /*
-         * 메뉴 등록 로직
-         * 아래 방법 말고 "*.sql" 파일을 이용하여 쿼리로 자동 "insert" 가능
-         */
-//        for (RegisteredMenus menu : RegisteredMenus.values()) {
-//            registerMenu(new RegisterMenuIn(menu.getName(), menu.getPrice()));
-//        }
-
         /**
          * 단순 테스트를 위한 코드로는 하드코딩이 더 심플하고 가독성이 좋을 수 있습니다.
          * 하드코딩이 항상 나쁜건 아니랍니다.
+         *
          */
         registerMenu(new RegisterMenuIn(Menu.CHICKEN.getName(), 20000));
         registerMenu(new RegisterMenuIn(Menu.PIZZA.getName(), 25000));

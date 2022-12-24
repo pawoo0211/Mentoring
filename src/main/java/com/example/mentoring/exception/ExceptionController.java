@@ -1,6 +1,8 @@
 package com.example.mentoring.exception;
 
+import com.example.mentoring.exception.domain.CheckOpeningException;
 import com.example.mentoring.exception.domain.MenuNotFoundException;
+import com.example.mentoring.exception.domain.MerchantNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -35,6 +37,32 @@ public class ExceptionController {
         ExceptionResponseDto exceptionResponseDto = ExceptionResponseDto.builder()
                 .isSuccess(false)
                 .errorMessage("해당 메뉴는 존재하지 않습니다.")
+                .build();
+
+        return exceptionResponseDto;
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler
+    public ExceptionResponseDto MerchantNotFoundExceptionHandler(MerchantNotFoundException e) {
+        log.error("[MerchantNotFoundExceptionHandler]= {}", e);
+
+        ExceptionResponseDto exceptionResponseDto = ExceptionResponseDto.builder()
+                .isSuccess(false)
+                .errorMessage("해당 가맹점은 존재하지 않습니다.")
+                .build();
+
+        return exceptionResponseDto;
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler
+    public ExceptionResponseDto CheckOpeningExceptionHandler(CheckOpeningException e) {
+        log.error("[CheckOpeningExceptionHandler]= {}", e);
+
+        ExceptionResponseDto exceptionResponseDto = ExceptionResponseDto.builder()
+                .isSuccess(false)
+                .errorMessage("현재 주문 가능한 시간이 아닙니다.")
                 .build();
 
         return exceptionResponseDto;

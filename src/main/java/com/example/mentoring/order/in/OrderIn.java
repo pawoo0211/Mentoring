@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 public class OrderIn {
 
+    private Long merchantId;
     private Menu menu;
 
     @NotNull(message = "가격을 입력해주세요,")
