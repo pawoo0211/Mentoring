@@ -18,18 +18,9 @@ import java.time.LocalTime;
 @RequiredArgsConstructor
 @Component
 @Aspect
-public class LoggingAspect {
+public class CheckOpenAspect {
 
     private final MerchantRepository merchantRepository;
-
-    @Around("@annotation(Timer)")
-    public Object logExecutionTime(ProceedingJoinPoint pjp) throws Throwable{
-        long begin = System.currentTimeMillis();
-        Object ret = pjp.proceed();
-        long end = System.currentTimeMillis() - begin;
-        log.info("[Timer] method`execution time is " + end);
-        return ret;
-    }
 
     @Around("@annotation(CheckOpeningHours)")
     public Object checkOpeningHours(ProceedingJoinPoint joinPoint) throws Throwable{
