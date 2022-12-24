@@ -23,45 +23,27 @@ public class CheckOpenAspect {
     private final MerchantRepository merchantRepository;
 
     @Around("@annotation(CheckOpeningHours)")
-    public Object checkOpeningHours(ProceedingJoinPoint joinPoint) throws Throwable{
-        Object ret = joinPoint.proceed();
+    public Object checkOpeningHours(ProceedingJoinPoint joinPoint) throws Throwable {
         Object object[] = joinPoint.getArgs();
 
-        try {
-            OrderIn orderIn = (OrderIn)object[0];
-            MerchantEntity merchantEntity = merchantRepository.findById(orderIn.getMerchantId())
-                    .orElseThrow(() -> new MerchantNotFoundException());
+        OrderIn orderIn = (OrderIn) object[0];
+        MerchantEntity merchantEntity = merchantRepository.findById(orderIn.getMerchantId())
+                .orElseThrow(() -> new MerchantNotFoundException());
 
-            if(!checkOpening(merchantEntity)){
-                CheckOpeningException e = new CheckOpeningException();
-                throw e;
-            }
-        }
-
-        catch (CheckOpeningException e) {
+        if (!checkOpening(merchantEntity)) {
+            CheckOpeningException e = new CheckOpeningException();
             throw e;
         }
 
-        return ret;
+        return joinPoint.proceed();
     }
 
-    private boolean checkOpening(MerchantEntity merchantEntity){
-        boolean result = true;
-        LocalTime localTime = LocalTime.now();
+    private boolean checkOpening(MerchantEntity merchantEntity) {
+        boolean result = false;
+        LocalTime now = LocalTime.now();
 
-        int currentHour = localTime.getHour();
-        int currentMinute = localTime.getMinute();
-        int openingHour = merchantEntity.getOpeningHours().getHour();
-        int openingMinute = merchantEntity.getOpeningHours().getMinute();
-        int closedHour = merchantEntity.getClosedHours().getHour();
-        int closedMinute = merchantEntity.getClosedHours().getMinute();
-
-        if (currentHour > openingHour && currentMinute > openingMinute){
-            result = false;
-        }
-
-        if (closedHour < closedHour && closedMinute < closedMinute){
-            result = false;
+        if (now.isAfter(merchantEntity.getOpeningHours()) && now.isBefore(merchantEntity.getClosedHours())) {
+            result = true;
         }
 
         return result;
