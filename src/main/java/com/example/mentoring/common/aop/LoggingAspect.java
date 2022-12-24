@@ -1,4 +1,4 @@
-package com.example.mentoring.common;
+package com.example.mentoring.common.aop;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -19,4 +19,6 @@ public class LoggingAspect {
         log.info("[Timer] method`execution time is " + end);
         return ret;
     }
+
+
 }

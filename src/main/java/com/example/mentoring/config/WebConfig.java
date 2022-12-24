@@ -13,6 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
         // registry.addConverter(new StringToMenuConverter()), 스프링 부트 환경에서는 해당 구문 필요 없음
+        // registry.addConverter(new LocalTimeConverter())
     }
 
     @Override
