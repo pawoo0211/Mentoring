@@ -1,8 +1,6 @@
 package com.example.mentoring.common.aop;
 
-import com.example.mentoring.constant.ExceptionKeyword;
 import com.example.mentoring.exception.domain.CheckOpeningException;
-import com.example.mentoring.exception.domain.ExceptionManager;
 import com.example.mentoring.exception.domain.MerchantNotFoundException;
 import com.example.mentoring.merchant.domain.MerchantEntity;
 import com.example.mentoring.merchant.domain.MerchantRepository;
@@ -23,7 +21,6 @@ import java.time.LocalTime;
 public class CheckOpenAspect {
 
     private final MerchantRepository merchantRepository;
-    private final ExceptionManager exceptionManager;
 
     @Around("@annotation(CheckOpeningHours)")
     public Object checkOpeningHours(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -34,7 +31,7 @@ public class CheckOpenAspect {
                 .orElseThrow(() -> new MerchantNotFoundException());
 
         if (!checkOpening(merchantEntity)) {
-            throw exceptionManager.choice(ExceptionKeyword.CheckOpening);
+            throw new CheckOpeningException();
         }
 
         return joinPoint.proceed();
