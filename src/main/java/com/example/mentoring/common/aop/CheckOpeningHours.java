@@ -4,6 +4,6 @@ import java.lang.annotation.*;
 
 @Documented
 @Target(ElementType.METHOD)
-@Retention(RetentionPolicy.CLASS)
+@Retention(RetentionPolicy.RUNTIME)
 public @interface CheckOpeningHours {
 }
